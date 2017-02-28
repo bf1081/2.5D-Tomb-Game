@@ -27,10 +27,11 @@ public class Tree : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		Debug.Log ("hit");
-		if(col.gameObject.tag == "hand" && mouseDelta.x > 200 ) {
+		if(col.gameObject.tag == "hand" && mouseDelta.x > 200 && WhichToolHeld.HammerSelect == 0 ) {
 			Debug.Log ("hit");
 			health = health - 1;
 			Instantiate (Particle, col.transform.position, col.transform.rotation);
+			ScoreManager.wood += mouseDelta.x / 200;
 	//		chips.GetComponent<ParticleSystem> ().enableEmission = true;
 	//		StartCoroutine (stopSparkles ());
 		}
